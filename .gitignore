@@ -1,0 +1,4 @@
+log/
+*.dat
+tmp/
+*.bak
