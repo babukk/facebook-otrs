@@ -6,8 +6,6 @@ use warnings;
 use SOAP::Lite;
 use Data::Dumper;
 
-# ----------------------------------------------------------------------------------------------------------------------
-
 sub new {
     my ($class, $params) = @_;
 
@@ -27,8 +25,6 @@ sub new {
 
     return $self;
 }
-
-# ----------------------------------------------------------------------------------------------------------------------
 
 sub createTicket {
     my ($self, $post_id, $post_date_time, $post_message) = @_;
@@ -89,8 +85,6 @@ sub createTicket {
         ->uri($self->{ 'namespace' })
         ->proxy($self->{ 'otrs_url' })
         ->$Operation(@SOAPData);
-
-    # print Dumper($SOAPObject);
 
     if ($SOAPObject->fault) {
         $self->{ 'logger' }->error($SOAPObject->faultcode . '; ' . $SOAPObject->faultstring)  if $self->{ 'logger' };
